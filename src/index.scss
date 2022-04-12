@@ -115,6 +115,23 @@ footer {
 
 @media all and (max-width: 494px) {
   header {
-    font-size: 9px;
+    font-size: 8px;
   }
+
+  button {
+    font-size: 1rem;
+  }
+}
+
+.instructions1 {
+  justify-content: center;
+  display: flex;
+  color: #b7deff;
+  font-weight: bold;
+}
+
+.guessed-letters {
+  color: white;
+  justify-content: center;
+  display: flex;
 }
