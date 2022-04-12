@@ -1,4 +1,5 @@
 import React from 'react'
+import step0 from './images/step_0.png'
 
 export function App() {
   return (
@@ -8,10 +9,10 @@ export function App() {
       </header>
       <body>
         <section className="instructions">
-          <strong>Instructions:</strong>jkhkjhjkhkjhkjhjkhkjhkjhkjhk
+          <strong>Instructions:</strong>jkjkljlkjlkjk
         </section>
         <section className="snowman-image">
-          <p>Placeholder</p>
+          <img src={step0} width="300" />
         </section>
         <section className="word-display">_*_*_*_*_*_*_*</section>
         <section className="alphabet-buttons">
