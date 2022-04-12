@@ -87,12 +87,20 @@ button {
 .instructions {
   justify-content: center;
   display: flex;
-  color: white;
+  color: black;
+  background-color: #b7deff;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 .snowman-image {
   justify-content: center;
   display: flex;
+  // border: 10px red solid;
+}
+
+.mrsnowman {
+  border: 6px #b7deff solid;
 }
 
 .word-display {
@@ -102,7 +110,7 @@ button {
   font-size: 2.5rem;
 }
 
-.alphabet-buttons {
+.alphabet_buttons {
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
@@ -113,25 +121,32 @@ footer {
   display: flex;
 }
 
-@media all and (max-width: 494px) {
-  header {
-    font-size: 8px;
-  }
-
-  button {
-    font-size: 1rem;
-  }
-}
-
 .instructions1 {
   justify-content: center;
   display: flex;
   color: #b7deff;
   font-weight: bold;
+  font-family: 'Snowburst One', cursive;
+  font-size: 2rem;
 }
 
-.guessed-letters {
+.guessed_letters {
   color: white;
   justify-content: center;
   display: flex;
+}
+
+@media all and (max-width: 494px) {
+  header {
+    font-size: 8px;
+  }
+  button {
+    font-size: 1rem;
+  }
+  .instructions {
+    font-size: 10px;
+  }
+  .instructions1 {
+    font-size: 18px;
+  }
 }

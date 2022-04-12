@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import step0 from './images/step_0.png'
 // import step1 from './images/step_1.png'
 // import step2 from './images/step_2.png'
@@ -7,15 +7,50 @@ import React from 'react'
 // import step5 from './images/step_5.png'
 // import step6 from './images/step_6.png'
 import step7 from './images/step_7.png'
-import word from './wordlist.json'
+import words from './wordlist.json'
 
 export function App() {
-  function _buttonClick() {
+  const alphabet = [
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'u',
+    'v',
+    'w',
+    'x',
+    'y',
+    'z',
+  ]
+
+  const randomWord = Math.floor(Math.random() * words.length)
+  console.log(randomWord)
+
+  const [guessedLetters, setGuessedLetters] = useState('')
+
+  function _clickLetter(letter: string) {
+    const newValueGuessedLetter = `${guessedLetters}${letter}`
+
+    setGuessedLetters(newValueGuessedLetter)
+
     console.log('clicked')
   }
-
-  const secretWord = word[0]
-  console.log(secretWord)
 
   return (
     <main>
@@ -28,9 +63,8 @@ export function App() {
         Each correct letter will then build a piece of your snowman. <br></br>
       </section>
       <p className="instructions1"> Ready, Set, Snow!</p>
-      <br></br>
       <section className="snowman-image">
-        <img src={step7} width="300" />
+        <img src={step7} width="300" className="mrsnowman" />
         <br></br>
       </section>
       <br></br>
@@ -38,37 +72,25 @@ export function App() {
 
       <br></br>
       <br></br>
-      <section className="alphabet-buttons">
-        <button onClick={_buttonClick}>a</button>
-        <button>b</button>
-        <button>c</button>
-        <button>d</button>
-        <button>e</button>
-        <button>f</button>
-        <button>g</button>
-        <button>h</button>
-        <button>i</button>
-        <button>j</button>
-        <button>k</button>
-        <button>l</button>
-        <button>m</button>
-        <button>n</button>
-        <button>o</button>
-        <button>p</button>
-        <button>q</button>
-        <button>r</button>
-        <button>s</button>
-        <button>t</button>
-        <button>u</button>
-        <button>v</button>
-        <button>w</button>
-        <button>x</button>
-        <button>y</button>
-        <button>z</button>
-      </section>
+
       <br></br>
 
-      <p className="guessed-letters">Guessed Letters:</p>
+      <p className="guessed_letters">Guessed Letters: {guessedLetters}</p>
+      <section className="alphabet_buttons">
+        {alphabet.map(function (letter) {
+          return (
+            <button
+              key={letter}
+              onClick={function () {
+                _clickLetter(letter)
+              }}
+              disabled={guessedLetters.includes(letter)}
+            >
+              {letter}
+            </button>
+          )
+        })}
+      </section>
 
       <footer>Made by Chad Lada</footer>
     </main>
