@@ -13,8 +13,11 @@ export function App() {
         </section>
         <section className="snowman-image">
           <img src={step0} width="300" />
+          <br></br>
         </section>
+        <br></br>
         <section className="word-display">_*_*_*_*_*_*_*</section>
+        <br></br>
         <section className="alphabet-buttons">
           <button>a</button>
           <button>b</button>
@@ -43,6 +46,7 @@ export function App() {
           <button>y</button>
           <button>z</button>
         </section>
+        <br></br>
       </body>
       <footer>Made by Chad Lada</footer>
     </main>
