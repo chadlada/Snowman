@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-// import step0 from './images/step_0.png'
-// import step1 from './images/step_1.png'
-// import step2 from './images/step_2.png'
-// import step3 from './images/step_3.png'
-// import step4 from './images/step_4.png'
-// import step5 from './images/step_5.png'
-// import step6 from './images/step_6.png'
+import step0 from './images/step_0.png'
+import step1 from './images/step_1.png'
+import step2 from './images/step_2.png'
+import step3 from './images/step_3.png'
+import step4 from './images/step_4.png'
+import step5 from './images/step_5.png'
+import step6 from './images/step_6.png'
 import step7 from './images/step_7.png'
 import words from './wordlist.json'
 
@@ -40,16 +40,62 @@ export function App() {
   ]
 
   // randomized word
-  const randomWordIndex = Math.floor(Math.random() * words.length)
-  console.log(words[randomWordIndex])
+  const randomWord = words[Math.floor(Math.random() * words.length)]
+  const [guessedLetters, setGuessedLetters] = useState([''])
+  const [secretWord, setSecretWord] = useState(randomWord)
+  const [currentWord, setCurrentWord] = useState('_______')
+  const [numberOfCorrectLettersGuessed, setNumberOfCorrectLettersGuessed] =
+    useState(0)
+  console.log(secretWord)
 
-  // guessed letter state
-  const [guessedLetters, setGuessedLetters] = useState('')
+  // ----------------------------------------FUNCTIONS----------------------------------------
 
+  function _newGame() {
+    setSecretWord(randomWord)
+    setCurrentWord('_______')
+    setGuessedLetters([''])
+    setNumberOfCorrectLettersGuessed(0)
+  }
   function _clickLetter(letter: string) {
-    const newValueGuessedLetter = `${guessedLetters}${letter}`
+    // const newValueGuessedLetter = `${guessedLetters}${letter}`
 
-    setGuessedLetters(newValueGuessedLetter)
+    setGuessedLetters([...guessedLetters, letter])
+
+    if (secretWord.includes(letter)) {
+      setNumberOfCorrectLettersGuessed(numberOfCorrectLettersGuessed + 1)
+      console.log(setNumberOfCorrectLettersGuessed)
+      let newCurrentWord = ''
+      for (let index = 0; index < secretWord.length; index++) {
+        if (secretWord[index] === letter) {
+          newCurrentWord = newCurrentWord.concat(letter)
+        } else {
+          newCurrentWord = newCurrentWord.concat(currentWord[index])
+        }
+      }
+
+      setCurrentWord(newCurrentWord)
+    }
+  }
+
+  function snowmanPictures() {
+    switch (numberOfCorrectLettersGuessed) {
+      case 0:
+        return step0
+      case 1:
+        return step1
+      case 2:
+        return step2
+      case 3:
+        return step3
+      case 4:
+        return step4
+      case 5:
+        return step5
+      case 6:
+        return step6
+      case 7:
+        return step7
+    }
   }
 
   return (
@@ -64,26 +110,14 @@ export function App() {
       </section>
       <p className="instructions1"> Ready, Set, Snow!</p>
       <section className="snowman-image">
-        <img src={step7} width="300" className="mrsnowman" />
-        <br></br>
+        <img src={snowmanPictures()} width="300" className="mrsnowman" />
       </section>
-      <br></br>
+
       <section className="word-display">
         <ul>
-          <li>_</li>
-          <li>_</li>
-          <li>_</li>
-          <li>_</li>
-          <li>_</li>
-          <li>_</li>
-          <li>_</li>
+          <li>{currentWord}</li>
         </ul>
       </section>
-
-      <br></br>
-      <br></br>
-
-      <br></br>
 
       <p className="guessed_letters">Guessed Letters: {guessedLetters}</p>
       <section className="alphabet_buttons">
@@ -100,6 +134,9 @@ export function App() {
             </button>
           )
         })}
+        <button className="new-game" onClick={_newGame}>
+          New Game
+        </button>
       </section>
       <br></br>
       <footer>Built with ♥ : CL</footer>
