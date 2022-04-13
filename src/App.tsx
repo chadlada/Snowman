@@ -39,17 +39,17 @@ export function App() {
     'z',
   ]
 
-  const randomWord = Math.floor(Math.random() * words.length)
-  console.log(randomWord)
+  // randomized word
+  const randomWordIndex = Math.floor(Math.random() * words.length)
+  console.log(words[randomWordIndex])
 
+  // guessed letter state
   const [guessedLetters, setGuessedLetters] = useState('')
 
   function _clickLetter(letter: string) {
     const newValueGuessedLetter = `${guessedLetters}${letter}`
 
     setGuessedLetters(newValueGuessedLetter)
-
-    console.log('clicked')
   }
 
   return (
@@ -68,7 +68,17 @@ export function App() {
         <br></br>
       </section>
       <br></br>
-      <section className="word-display">_*_*_*_*_*_*_*</section>
+      <section className="word-display">
+        <ul>
+          <li>_</li>
+          <li>_</li>
+          <li>_</li>
+          <li>_</li>
+          <li>_</li>
+          <li>_</li>
+          <li>_</li>
+        </ul>
+      </section>
 
       <br></br>
       <br></br>
@@ -91,8 +101,8 @@ export function App() {
           )
         })}
       </section>
-
-      <footer>Made by Chad Lada</footer>
+      <br></br>
+      <footer>Built with ♥ : CL</footer>
     </main>
   )
 }
