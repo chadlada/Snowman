@@ -8,6 +8,7 @@ import step5 from './images/step_5.png'
 import step6 from './images/step_6.png'
 import step7 from './images/step_7.png'
 import words from './wordlist.json'
+import { Snow } from './components/snow'
 
 export function App() {
   const alphabet = [
@@ -98,8 +99,11 @@ export function App() {
     }
   }
 
+  // ----------------------------------------JSX (HTML)----------------------------------------
+
   return (
     <main>
+      <Snow />
       <header>
         <h1>Do you want to build a snowman?</h1>
       </header>
